@@ -22,5 +22,9 @@ import (
 )
 
 func main() {
-	sdk.Serve(pg.Specification, source.NewSource, destination.NewDestination)
+	sdk.Serve(sdk.Connector{
+		NewSpecification: pg.Specification,
+		NewSource:        source.NewSource,
+		NewDestination:   destination.NewDestination,
+	})
 }
