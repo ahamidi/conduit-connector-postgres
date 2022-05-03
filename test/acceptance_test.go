@@ -30,10 +30,13 @@ func TestAcceptance(t *testing.T) {
 			},
 			SourceConfig: map[string]string{
 				"table":   tableUnderTest,
-				"url":     RepmgrConnString,
+				"url":     RegularConnString,
 				"columns": "id,key",
 			},
-			DestinationConfig: nil,
+			DestinationConfig: map[string]string{
+				"url":   RegularConnString,
+				"table": "records",
+			},
 			BeforeTest: func(t *testing.T) {
 				t.Logf("table under test: %v", tableUnderTest)
 			},
